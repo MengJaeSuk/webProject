@@ -1,0 +1,67 @@
+//Created by cmm on 11/26/14.
+
+#main(style='min-height:500px;padding-top: 10px;')
+	.container
+		.row
+			.span3
+			h2.span2
+				a#gridSpan
+					span.glyphicon.glyphicon-th
+				|&nbsp;
+				a#listSpan
+					span.glyphicon.glyphicon-th-list
+			.search-box.span4(style='padding-top: 10px;')
+				a.search-icon(ng-click='searchCandidate()' style='padding-top: 10px;')
+					span.glyphicon.glyphicon-search(style='top:4px')
+				input#search.search(ng-model='search' placeholder='search')
+		section#about_us
+			article#gridView
+				.row
+					.span3.team_member(ng-repeat='candidate in candidates' style='margin-top: 40px;padding-bottom:10px;padding-top:20px')
+						figure(style='background-image: url({{candidate.photo1}})')
+							img(src='{{candidate.photo2}}')
+						h5 {{candidate.name}}
+						a ({{candidate.nation}})
+						br
+						small {{candidate.university}}
+						br
+						small {{candidate.major}} / {{candidate.degree}}
+						br
+						small {{candidate.skill}}
+						hrbr
+						.team_social
+							a
+								strong(style='color:white') {{candidate.sex}}
+							a
+								strong(style='color:white') {{candidate.age}}
+							p.short_bio {{candidate.description}}
+			br
+			article#listView
+				.row(ng-repeat='candidate in candidates')
+					.span2
+					.span9
+						.post_comments
+							.comment
+								figure.span2(style='width:100px')
+									img.img-circle(src='{{candidate.photo2}}')
+								.span6(style='padding-top:5px;')
+									.comment_name
+										strong {{candidate.name}} &nbsp;
+										a ({{candidate.nation}})
+										br
+										strong Sex:
+										| {{candidate.sex}} &nbsp;
+										strong Age:
+										| {{candidate.age}} years old
+										br
+									.comment_date
+										| {{candidate.university}} :
+										| {{candidate.major}} / {{candidate.degree}}
+										br
+										strong Skill:
+										| {{candidate.skill}}
+									.the_comment
+										p {{candidate.description}}
+
+			.row
+				.pagination.pagination-centered(recipe-page page-object="pageing" click-function="list")

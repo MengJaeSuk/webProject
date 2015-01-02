@@ -1,0 +1,48 @@
+//Created by cmm on 12/31/14.
+
+#main(style='min-height:500px')
+	.container
+		section#about_us
+			article
+				.row
+					.span3.team_member
+						figure(style='background-image: url(images/1b.jpg)')
+							img(src='images/1a.jpg')
+						h5 Johny Boycot
+						small Web-Developer / Founder
+						hr
+						.team_social
+							a
+								i.icon.icon-facebook
+							a
+								i.icon.icon-facebook
+							a
+								i.icon.icon-facebook
+							a
+								i.icon.icon-facebook
+						p.short_bio	In hac habitasse platea dictumst. Suspendisse non tellus ligula. Morbi molestie feugiat tortor a hendrerit.
+
+			.row
+				.post_comments
+					h4 Comments
+					.comment
+						.bs-docs-example
+							#accordion3.accordion
+								.accordion-group
+									.accordion-heading
+										a.accordion-toggle(href='#comment' data-parent="#accordion3" data-toggle="collapse") comment
+									disectionv#comment.accordion-body.collapse
+										.accordion-inner
+											.row(ng-repeat='comment in comments')
+												figure.span1
+													img(alt='0' src='{{comment.author.head}}')
+												.span6
+													.comment_name
+														strong {{comment.author.account}}
+														//a.reply(ng-click='addComment(comment.author._id)') Reply
+													.comment_date
+														span.glyphicon.glyphicon-time
+														| {{comment.logTime}}
+													.the_comment
+														p {{comment.content}}
+				.pagination.pagination-centered(a-page page-object="pageing" click-function="list")
