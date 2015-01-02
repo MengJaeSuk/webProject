@@ -22,9 +22,7 @@ exports.search = function(req,res){
     var pageNo = req.param('pageNo');
     var pageSize = req.param('pageSize');
     var queryStr = req.param('queryStr');
-    console.log("--search "+queryStr);
     CandidateDao.search(pageNo,pageSize,queryStr,function (err1, candidates) {
-        console.log(candidates);
         CandidateDao.searchNum(queryStr,function(err2,num){
             if(!(err1 || err2)){
                 res.json({root:candidates,total:num});
